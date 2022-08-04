@@ -6,7 +6,7 @@ import { RouterModule } from '@angular/router';
 import {  HttpClientModule } from '@angular/common/http';
 import { SpinnerComponent } from './components/spinner/spinner.component';
 import { SelectComponent } from './components/select/select.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CartsModule } from '../carts/carts.module';
 
 
@@ -25,6 +25,7 @@ import { CartsModule } from '../carts/carts.module';
     HttpClientModule,
     RouterModule,
     FormsModule,
+    ReactiveFormsModule
     
     
     
@@ -35,6 +36,8 @@ import { CartsModule } from '../carts/carts.module';
     SelectComponent,
     FormsModule,
     RouterModule,
+    ReactiveFormsModule
+
    
     
     

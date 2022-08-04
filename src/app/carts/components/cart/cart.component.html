@@ -1,17 +1,19 @@
 <div class="cartBox">
+ <form [formGroup]="form">
     <div class="row">
         <div class="col-md-3">
             <label for="">Start Data</label>
-            <input type="date" class="form-control">
+            <input type="date" formControlName="start" class="form-control">
         </div>
         <div class="col-md-3">
             <label for="">End Data</label>
-            <input type="date" class="form-control">
+            <input type="date" formControlName="end" class="form-control">
         </div>
         <div class="col-md-2 d-flex align-items-end">
-            <button class="btn btn-success">Apply</button>
+            <button class="btn btn-success" (click)="applyFilter()">Apply</button>
         </div>
     </div>
+ </form>
     
     <table class="table table-striped">
         <header style="padding-left: 30px;">
@@ -37,7 +39,7 @@
                 </td>
                
                  <td>
-                    <button class="btn btn-danger" >Delete</button>
+                    <button class="btn btn-danger" (click)="deleteCart(item.id)">Delete</button>
                     <button class="btn btn-primary">View</button>
                  </td>
                 
