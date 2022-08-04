@@ -8,7 +8,7 @@ const routes: Routes = [
   {path:"products",component:AllProductsComponent},
   {path:"detalis/:id",component:ProductsDetalisComponent},
   {path:"cart",component:CartComponent},
-  {path:"**",redirectTo:"products",pathMatch:"full"}
+  {path:"**",redirectTo:"cart",pathMatch:"full"}
 ];
 
 @NgModule({

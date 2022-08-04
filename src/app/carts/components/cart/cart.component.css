@@ -19,11 +19,7 @@ tbody tr td{
     text-align: center;
     vertical-align: middle;
 }
-tbody tr img{
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-}
+
 input{
     text-align: center;
 }
@@ -45,5 +41,5 @@ span:hover{
     box-shadow: 0px 5px 10px rgb(#e67779, #000000,);
 }
 header tr{
-    margin-left: 120px;
+    padding-left: 170px;
 }

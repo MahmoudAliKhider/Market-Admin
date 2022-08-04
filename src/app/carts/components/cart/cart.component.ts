@@ -9,70 +9,17 @@ import { CartsService } from '../../services/carts.service';
 export class CartComponent implements OnInit {
   
   constructor(private service:CartsService) { }
-  cartproduct:any[]=[]
-  total:any=0;
-  success:boolean=false;
+  carts:any[]=[]
+ 
   ngOnInit(): void {
-    this.getCartProduct()
-  }
-
-  getCartProduct(){
-    if("cart" in localStorage){
-    this.cartproduct=JSON.parse(localStorage.getItem("cart")!)
-    // console.log(this.cartproduct)
-    }
-   this.getTotal();
-  }
-  getTotal(){
-    this.total=0;
-    for(let x in this.cartproduct){
-      this.total+=this.cartproduct[x].item.price * this.cartproduct[x].quantity;
-    }
-  }
-
-  addAmount(index:number){
-   this.cartproduct[index].quantity++;
-   this.getTotal();
-   localStorage.setItem("cart",JSON.stringify(this.cartproduct)); 
-  }
-  minsAmount(index:number){
-   this.cartproduct[index].quantity--;
-   this.getTotal();
-  localStorage.setItem("cart",JSON.stringify(this.cartproduct))
-  }
-  detectChange(){
-    localStorage.setItem("cart",JSON.stringify(this.cartproduct))
+   this.getAllcarts()
   }
 
 
-  deleteProduct(index:number){
-    this.cartproduct.splice(index,1);
-    localStorage.setItem("cart",JSON.stringify(this.cartproduct))
-
-  }
-
-  clearAll(){
-    this.cartproduct=[]
-    this.getTotal()
-    localStorage.setItem("cart",JSON.stringify(this.cartproduct))
-  }
-
-  /////////
-  addCart(){
-  let products = this.cartproduct.map(item=>{
-   return {productId:item.item.id, quantity:item.quantity}
+getAllcarts(){
+  this.service.getAllcart().subscribe((res:any)=>{
+this.carts=res
   })
-
-    let Model={
-      userId:5,
-      date:new Date(),
-      products:products
-
-    }
-    this.service.createNewCart(Model).subscribe(res=>{
-      this.success=true
-    })
-    console.log(Model)
-  }
+}
 
 }
