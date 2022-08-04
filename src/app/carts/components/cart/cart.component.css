@@ -1,0 +1,49 @@
+.cartBox{
+    border: 1px solid #DDD;
+    border-radius: 5px;
+    padding: 0 20px;
+    margin: 50px 0;
+}
+.quantity{
+    display: flex;
+    justify-content: space-between;
+}.form-control{
+    margin: 0 20px;
+}
+tbody{
+    border-top: 1px solid #c61d21;
+    border-bottom: 1px solid #c61d21;
+}
+tbody tr td{
+    border-bottom: 0;
+    text-align: center;
+    vertical-align: middle;
+}
+tbody tr img{
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+}
+input{
+    text-align: center;
+}
+.headCart{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 18px;
+}
+span{
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+span:hover{
+    background-color: #e67779;
+    color:rgb(113, 108, 108);
+    
+    box-shadow: 0px 5px 10px rgb(#e67779, #000000,);
+}
+header tr{
+    margin-left: 120px;
+}

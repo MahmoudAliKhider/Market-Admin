@@ -1,0 +1,52 @@
+<div class="cartBox">
+    <h1 class="text-danger"> Shoping Cart</h1>
+    <div class="headCart">
+      <div class="lead">You Have <label class="text-danger">{{cartproduct.length}}</label>item in your cart</div>
+      <span class="text-danger cart-header" (click)="clearAll()">Clear shopping</span>
+    </div>
+    <table class="table table-striped">
+        <header>
+            <tr>
+                <th></th>
+                <th>Name</th>
+                <th>price</th>
+                <th style="width: 25%;">Quantity</th>
+                <th>Total</th>
+                <th></th>
+
+            </tr>
+        </header>
+
+        <tbody>
+            <tr *ngFor="let item of cartproduct;let index=index">
+                <td><img src="{{item.item.image}}" alt=""></td>
+                <td>{{item.item.title}}</td>
+                <td>{{item.item.price}}</td>
+                <td>
+                    <div class="quantity">
+                        <button class="btn btn-dark" (click)="addAmount(index)">+</button>
+                        <input type="number" class="form-control" (change)="detectChange()" [(ngModel)]="item.quantity">
+                         <button class="btn btn-dark" (click)="minsAmount(index)">-</button>  
+                          
+                    </div>
+                </td>
+                 <td>{{item.item.price * item.quantity}} L.E</td>
+                 <td>
+                    <button class="btn btn-danger" (click)="deleteProduct(index)">Delete</button>
+                 </td>
+                
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th>Total : {{total}}L.E</th>
+                <th><button class="btn btn-success" (click)="addCart()">Order Now</button></th>
+            </tr>
+        </tfoot>
+    </table>
+</div>
+<div class="alert alert-success" role="alert" *ngIf="success"><strong>Well done!</strong>Your Order is Successfull send</div>
