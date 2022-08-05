@@ -14,16 +14,18 @@
         </div>
     </div>
  </form>
+
+ 
     
     <table class="table table-striped">
-        <header style="padding-left: 30px;">
-            <tr >
+        <header>
+            <tr>
                 <th></th>
-               <th style="padding-left: 70px;">Date</th>
+               <th >Date</th>
                <th></th>
                
                <th></th>
-                <th style="padding-left: 90px;">Quantity</th>
+                <th>Quantity</th>
               
                 <th></th>
 
@@ -33,14 +35,17 @@
         <tbody >
             <tr *ngFor="let item of carts;let index=index">
               <td></td>
-                <td>{{item.date | date:"short date"}}</td>
-                <td style="padding-right: 560px;">
+                <td>{{item.date | date:"long date"}}</td>
+                <td >
                     {{item.products.length}}
                 </td>
                
                  <td>
-                    <button class="btn btn-danger" (click)="deleteCart(item.id)">Delete</button>
-                    <button class="btn btn-primary">View</button>
+                    <button class="btn btn-danger mx-2" (click)="deleteCart(item.id)">Delete</button>
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#staticBackdrop" (click)="view(index)">
+                      View
+                      </button>
+                      
                  </td>
                 
             </tr>
@@ -48,3 +53,52 @@
         
     </table>
 </div>
+  
+  <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered  " style="max-width: 900px !important;">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="cartBox">
+            <table class="table table-striped">
+                <header >
+                    <tr>
+                        <th></th>
+                        <th>Name</th>
+                        <th>price</th>
+                        <th style="width: 25%;">Quantity</th>
+                        <th>Total</th>
+                        <th></th>
+        
+                    </tr>
+                </header>
+        
+                <tbody>
+                    <tr *ngFor="let item of products;let index=index">
+                        <td><img src="{{item.item.image}}" alt=""></td>
+                        <td>{{item.item.title}}</td>
+                        <td>{{item.item.price}}</td>
+                        <td>
+                     </tr>
+                     </tbody>
+                     <tfoot>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th>Total : {{total|currency}}</th>
+                     </tfoot>
+              </table>
+              </div>
+        </div>
+        
+      </div>
+    </div>
+</div>
+  
+

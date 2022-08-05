@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { ProductsService } from 'src/app/products/services/products.service';
 import { CartsService } from '../../services/carts.service';
 
 @Component({
@@ -9,9 +10,12 @@ import { CartsService } from '../../services/carts.service';
 })
 export class CartComponent implements OnInit {
   
-  constructor(private service:CartsService , private build:FormBuilder) { }
-  carts:any[]=[]
+  constructor(private service:CartsService , private build:FormBuilder , private productservice: ProductsService) { }
+  carts:any
   form!:FormGroup
+  total=0
+  detalis:any
+  products:any[]=[]
   ngOnInit(): void {
     this.form=this.build.group({
       start:[''],
@@ -39,5 +43,16 @@ deleteCart(id:number){
     this.getAllcarts();
     alert("deleted Cert")
   })
+}
+
+view(index : number){
+  this.products=[];
+  this.detalis=this.carts[index];
+  for(let x in this.detalis.products){
+  this.productservice.getProductsById(this.detalis.products[x].productId).subscribe(res =>{
+    this.products.push({item: res , quantity:this.detalis.products[x].quantity})
+  })
+  }
+
 }
 }

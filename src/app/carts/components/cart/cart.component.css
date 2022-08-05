@@ -4,17 +4,23 @@
     padding: 0 20px;
     margin: 50px 0;
 }
-.quantity{
+.table .quantity{
     display: flex;
     justify-content: space-between;
 }.form-control{
     margin: 0 20px;
 }
-tbody{
+ .table img{
+    border: 1px solid #DDD;
+    border-radius: 5px;
+    padding: 0 20px;
+    margin: 50px 0;
+}
+.table tbody{
     border-top: 1px solid #c61d21;
     border-bottom: 1px solid #c61d21;
 }
-tbody tr td{
+.table tbody tr td{
     border-bottom: 0;
     text-align: center;
     vertical-align: middle;
