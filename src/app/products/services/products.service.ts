@@ -21,4 +21,8 @@ export class ProductsService {
  getProductsById(id:any){
   return this.http.get(environment.baseApi+'products/'+id);
 }
+
+creatProduct(model:any){
+  return this.http.post(environment.baseApi+'products',model)
+}
 }

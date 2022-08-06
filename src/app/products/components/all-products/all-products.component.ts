@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Product } from '../../model/product';
 import { ProductsService } from '../../services/products.service';
 
@@ -12,10 +13,18 @@ products:Product[]=[];
 categories:string[]=[];
  loading:boolean=false;
  cartproduct:any[]=[];
- base64:any=''
-  constructor(private service:ProductsService) { }
+ base64:any='';
+ form!:FormGroup
+  constructor(private service:ProductsService,private builder:FormBuilder) { }
 
   ngOnInit(): void {
+    this.form=this.builder.group({
+       title:["",[Validators.required]],
+       price:["",[Validators.required]],
+       description:["",[Validators.required]],
+       image:["",[Validators.required]],
+       category:["",[Validators.required]]
+    });
     this.getProduct(); 
     this.getCategories();
   }
@@ -74,15 +83,24 @@ categories:string[]=[];
   }
 
   getSelectCategory(event:any){
-
+  this.form.get('category')?.setValue(event.target.value)
   }
 
   getImagePath(event:any){
-   const file = event.target.file[0];
+   const file = event.target.files[0];
    const reader = new FileReader();
    reader.readAsDataURL(file);
-   reader.onload=()=>{
+   reader.onload = ()=>{
     this.base64 = reader.result;
+  this.form.get('image')?.setValue(this.base64)
+   
    }
+  }
+  addProduct(){
+    const model = this.form.value;
+    this.service.creatProduct(model).subscribe(res=>{
+      alert('Add Product Successed')
+    })
+   
   }
 }
