@@ -12,6 +12,7 @@ products:Product[]=[];
 categories:string[]=[];
  loading:boolean=false;
  cartproduct:any[]=[];
+ base64:any=''
   constructor(private service:ProductsService) { }
 
   ngOnInit(): void {
@@ -74,5 +75,14 @@ categories:string[]=[];
 
   getSelectCategory(event:any){
 
+  }
+
+  getImagePath(event:any){
+   const file = event.target.file[0];
+   const reader = new FileReader();
+   reader.readAsDataURL(file);
+   reader.onload=()=>{
+    this.base64 = reader.result;
+   }
   }
 }
