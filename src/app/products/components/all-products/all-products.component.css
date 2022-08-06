@@ -1,0 +1,10 @@
+textarea{
+    max-width: 100%;
+    min-width: 100%;
+    max-height: 120px;
+    min-height: 120px;
+}
+.model img{
+  width: 100%;
+  max-height: 85p;
+}

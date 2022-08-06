@@ -71,4 +71,8 @@ categories:string[]=[];
     }
 
   }
+
+  getSelectCategory(event:any){
+
+  }
 }
